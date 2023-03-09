@@ -3,8 +3,11 @@ package com.mkt.testinginandroidl1.di
 import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.mkt.testinginandroidl1.data.local.ShoppingDao
 import com.mkt.testinginandroidl1.data.local.ShoppingItemDatabase
 import com.mkt.testinginandroidl1.data.remote.PixaBayApi
+import com.mkt.testinginandroidl1.repositories.DefaultShoppingRepository
+import com.mkt.testinginandroidl1.repositories.ShoppingRepository
 import com.mkt.testinginandroidl1.util.Constants.BASE_URL
 import com.mkt.testinginandroidl1.util.Constants.DATABASE_NAME
 import dagger.Module
@@ -25,6 +28,13 @@ object AppModule {
     fun provideShoppingItemDatabase( @ApplicationContext context: Context ) = Room.databaseBuilder(
         context, ShoppingItemDatabase::class.java, DATABASE_NAME
     ).build()
+
+    @Singleton
+    @Provides
+    fun provideDefaultShoppingRepository(
+        dao: ShoppingDao,
+        api: PixaBayApi
+    ) = DefaultShoppingRepository(dao,api) as ShoppingRepository
 
     @Singleton
     @Provides

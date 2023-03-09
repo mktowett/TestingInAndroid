@@ -1,7 +1,8 @@
-package com.mkt.testinginandroidl1
+package com.mkt.testinginandroidl1.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.mkt.testinginandroidl1.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
